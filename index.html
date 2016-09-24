@@ -61,12 +61,13 @@
   <h1> WELCOME! </h1>
   <div id = "myDIV" class = "header">
     <h2> LINKS </h2>
-      <input type="text" id = "myInput" placeholder = "http://..." name="link">
-      <span onclick="newElement()" class="addBtn">ADD</span>
-    <ul id = "myUL">
-      <li>http://www.w3schools.com/howto/howto_js_todolist.asp</li>
+      <ul id = "links">
+        <li><a href = "http://facebook.com">Facebook</a>
+        <li><a href = "http://google.com">Google</a>
+        <li><a href = "http://calcentral.berkeley.edu">Cal Central</a>
+        <li><a href = "http://bcourses.berkeley.edu">BCourses</a>
+        <li><a href = "http://youtube.com">YouTube</a>
     </ul>
-  </div>
   
 <div id="myDIV" class="header">
   <h2>My To Do List</h2>
@@ -242,29 +243,6 @@ function newElement() {
   var txt = document.createTextNode("\u00D7");
   span.className = "close";
   span.appendChild(txt);
-  li.appendChild(span);
-
-  for (i = 0; i < close.length; i++) {
-    close[i].onclick = function() {
-      var div = this.parentElement;
-      div.style.display = "none";
-    }
-  }
-}
-function newElementToDo() {
-  var li = document.createElement("li");
-  var inputValue = document.getElementById("myInput").value;
-  var t = document.createTextNode(inputValue);
-  li.appendChild(t);
-  if (inputValue === '') {
-    alert("You must write something!");
-  } else {
-    document.getElementById("myUL").appendChild(li);
-  }
-  document.getElementById("myInput").value = "";
-
-  var span = document.createElement("SPAN");
-  span.className = "close";
   li.appendChild(span);
 
   for (i = 0; i < close.length; i++) {

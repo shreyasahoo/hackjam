@@ -71,11 +71,16 @@
 <div id="myDIV" class="header">
   <h2>My To Do List</h2>
   <input type="text" id="myInput" placeholder="Title...">
-  <span onclick="newElement()" class="addBtn">Add</span>
+  <span onclick="newElementToDo()" class="addBtn">Add</span>
 </div>
 
 <ul id="myUL">
-  
+  <li>Hit the gym</li>
+  <li class="checked">Pay bills</li>
+  <li>Meet George</li>
+  <li>Buy eggs</li>
+  <li>Read a book</li>
+  <li>Organize office</li>
 </ul>
 
 <style>
@@ -83,6 +88,7 @@
     box-sizing: border-box;
 }
 
+  
 ul {
     margin: 0;
     padding: 0;
@@ -93,7 +99,7 @@ ul li {
     cursor: pointer;
     position: relative;
     padding: 12px 8px 12px 40px;
-    background: #40E0D0;
+    background: #eee;
     font-size: 18px;
     transition: 0.2s;
 
@@ -150,7 +156,7 @@ ul li.checked::before {
 
 /* Style the header */
 .header {
-    background-color: #AFEEEE;
+    background-color: #f44336;
     padding: 30px 40px;
     color: white;
     text-align: center;
@@ -236,6 +242,29 @@ function newElement() {
   var txt = document.createTextNode("\u00D7");
   span.className = "close";
   span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+}
+function newElementToDo() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  span.className = "close";
   li.appendChild(span);
 
   for (i = 0; i < close.length; i++) {
